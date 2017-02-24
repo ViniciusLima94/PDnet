@@ -81,11 +81,14 @@ eqs = '''
   d : amp
 
 '''
-
+reset = '''
+	v = v_r
+	u = u + d
+'''
 ###############################################################################
 # Creating neurons
 ###############################################################################
-neurons = NeuronGroup(N, eqs, threshold='v>v_th', reset='v=v_r', method='rk4', refractory=tau_ref)
+neurons = NeuronGroup(N, eqs, threshold='v>v_p', reset=reset, method='rk4', refractory=tau_ref)
 #neurons.v = 'v0 + std_v0*randn()'
 neurons.I = 0.0*pA
 
