@@ -52,8 +52,8 @@ std_d_ex = 0.75*ms # Std. Excitatory delay
 d_in = 0.80*ms      # Inhibitory delay
 std_d_in = 0.4*ms  # Std. Inhibitory delay
 
-w_ex = rf*.35*mV      # Excitatory weight
-std_w_ex = rf*.0352*mV  # Standard deviation weigth
+w_ex = rf*0.194*mV      # Excitatory weight
+std_w_ex = rf*0.020*mV  # Standard deviation weigth
 g = 4.0                 # Inhibitory weight balance
 
 ###############################################################################
