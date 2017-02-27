@@ -52,8 +52,8 @@ std_d_ex = 0.75*ms # Std. Excitatory delay
 d_in = 0.80*ms      # Inhibitory delay
 std_d_in = 0.4*ms  # Std. Inhibitory delay
 
-w_ex = rf*0.3512*mV     # Excitatory weight
-std_w_ex = rf*0.0352*mV  # Standard deviation weigth
+w_ex = rf*0.194*mV     # Excitatory weight
+std_w_ex = rf*0.020*mV  # Standard deviation weigth
 g = 4.0                 # Inhibitory weight balance
 
 ###############################################################################
@@ -88,7 +88,7 @@ reset = '''
 ###############################################################################
 # Creating neurons
 ###############################################################################
-neurons = NeuronGroup(N, eqs, threshold='v>v_p', reset=reset, method='rk4', refractory=tau_ref)
+neurons = NeuronGroup(N, eqs, threshold='v>v_th', reset=reset, method='euler', refractory=tau_ref)
 #neurons.v = 'v0 + std_v0*randn()'
 neurons.I = 0.0*pA
 
@@ -121,16 +121,16 @@ for r in range(0, 8):
                         p[r].d = 100*pA
                         p[r].v = '(-60 + 10*randn())*mV'
 		else:
-            		p[r].Cm = 20.0*pF
-                	p[r].v_r = -55.0*mV
+            		p[r].Cm = 100.0*pF
+                	p[r].v_r = -60.0*mV
                 	p[r].v_th = -40.0*mV
-                	p[r].v_p = 25*mV
-                	p[r].k = 1.0*pA/(mV**2)
-                	p[r].a = 0.2*kHz
-                	p[r].b = 8.0*pA/mV
-                	p[r].c = -55*mV 
-                	p[r].d = 200*pA         
-			p[r].v = '(-55 + 10*randn())*mV'
+                	p[r].v_p = 35*mV
+                	p[r].k = 0.7*pA/(mV**2)
+                	p[r].a = 0.03*kHz
+                	p[r].b = -2.0*pA/mV
+                	p[r].c = -50*mV 
+                	p[r].d = 100*pA         
+			p[r].v = '(-60 + 10*randn())*mV'
 ###############################################################################
 # Creating synapse connections
 ###############################################################################
